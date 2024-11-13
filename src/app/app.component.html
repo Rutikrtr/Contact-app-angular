@@ -1,0 +1,55 @@
+<h1>Contacts App</h1>
+
+<!-- New Contact button: Centered above the table -->
+<div class="button-container">
+  <button (click)="openModal()">New Contact</button>
+</div>
+
+<!-- Table displaying contacts -->
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contacts; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ contact.firstname }}</td>
+      <td>{{ contact.lastname }}</td>
+      <td>{{ contact.email }}</td>
+      <td>
+        <button (click)="editContact(contact)">Edit</button>
+      </td>
+      <td>
+        <button (click)="deleteContact(contact._id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal for Adding or Editing a Contact -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ contactToEdit._id ? 'Edit Contact' : 'Add New Contact' }}</h2>
+
+    <form (submit)="contactToEdit._id ? updateContact() : addNewContact()">
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" [(ngModel)]="contactToEdit.firstname" name="firstname" required />
+
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" [(ngModel)]="contactToEdit.lastname" name="lastname" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="contactToEdit.email" name="email" required />
+
+      <button type="submit">{{ contactToEdit._id ? 'Update' : 'Submit' }}</button>
+    </form>
+  </div>
+</div>
