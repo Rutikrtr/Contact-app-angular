@@ -1,17 +1,21 @@
-// src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
-import { ContactComponent } from './contact/contact.component';
-import { ContactService } from './contact.service';
+import { ContactListComponent } from './components/contact-list/contact-list.component';
+import { ContactModalComponent } from './components/contact-modal/contact-modal.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
-  providers: [ContactService],
-  bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    ContactListComponent,
+    ContactModalComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
