@@ -1,111 +1,150 @@
-/* Center the New Contact button */
-.button-container {
+.contact-card {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
   text-align: center;
-  margin-bottom: 20px; /* Add space between the button and the table */
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  width: 100%;
 }
 
-button {
-  padding: 8px 16px;
-  font-size: 16px;
-  color: white;
-  background-color: #28a745;
+.create-button {
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #fdd835;
+  color: #333;
   border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-button:hover {
-  background-color: #218838;
+.create-button:hover {
+  background-color: #fbc02d;
 }
 
-/* Table styling */
 table {
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
   border-collapse: collapse;
-  border: 1px solid #ddd;
-}
-
-table, th, td {
-  border: 1px solid #ddd;
+  background-color: #fff;
 }
 
 th, td {
-  padding: 12px;
+  padding: 12px 15px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-thead {
-  background-color: #f2f2f2;
+th {
+  background-color: #f5f5f5;
+  color: #333;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+td:last-child,
+th:last-child {
+  text-align: center;
 }
 
-/* Modal styling */
+.edit-button, .delete-button {
+  padding: 8px 12px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #8e24aa;
+}
+
+.delete-button {
+  background-color: #e53935;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2; /* Ensure modal is above other content */
+  z-index: 1000;
 }
 
 .modal-content {
   background-color: #fff;
   padding: 20px;
-  border-radius: 8px;
-  width: 300px;
+  width: 400px;
+  border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
 }
 
-.modal-content h2 {
-  margin-top: 0;
+.close {
+  font-size: 24px;
+  cursor: pointer;
+  float: right;
 }
 
-.modal-content form {
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-content label {
-  margin-bottom: 5px;
+form label {
+  display: block;
+  margin-top: 10px;
   font-weight: bold;
 }
 
-.modal-content input {
-  margin-bottom: 15px;
+form input[type="text"],
+form input[type="email"] {
+  width: 100%;
   padding: 8px;
+  margin-top: 5px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
-.modal-content button[type="submit"] {
-  background-color: #28a745;
-  color: white;
-  padding: 8px;
+form button {
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  background-color: #4caf50;
+  color: #fff;
   border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.modal-content button[type="submit"]:hover {
-  background-color: #218838;
-}
-
-.modal-content .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  color: #333;
+  border-radius: 3px;
   cursor: pointer;
+}
+
+form button:hover {
+  background-color: #43a047;
+}
+
+.edit-button, .delete-button {
+  padding: 8px 12px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #8e24aa;
+  margin-right: 10px; /* Adds space between buttons */
+}
+
+.delete-button {
+  background-color: #e53935;
+}
+
+button:hover {
+  opacity: 0.9;
 }
