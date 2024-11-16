@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
@@ -11,24 +11,39 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./contact-modal.component.css']
 })
 export class ContactModalComponent {
-  @Input() contactToEdit: any;
+  @Input() contactToEdit: any = null;
   @Output() refreshContacts = new EventEmitter<void>();
+
+  contact: any = {};
 
   constructor(private contactService: ContactService) {}
 
-  // Close the modal and reset
-  closeModal() {
-    this.contactToEdit = null;
+  ngOnChanges(): void {
+    if (this.contactToEdit) {
+      this.contact = { ...this.contactToEdit }; // Clone the contact for editing
+    } else {
+      this.contact = { firstname: '', lastname: '', email: '' }; // Initialize a new contact
+    }
+  }
+  
+  async handleSubmit() {
+    try {
+      if (this.contact._id) {
+        // Edit contact
+        await this.contactService.updateContact(this.contact._id, this.contact);
+      } else {
+        // Create new contact
+        await this.contactService.createContact(this.contact);
+      }
+      this.refreshContacts.emit(); // Notify parent to refresh the contact list
+      this.closeModal();
+    } catch (error) {
+      console.error('Error saving contact:', error);
+    }
   }
 
-  // Handle submit for add or update contact
-  async handleSubmit() {
-    if (this.contactToEdit._id) {
-      await this.contactService.updateContact(this.contactToEdit._id, this.contactToEdit);
-    } else {
-      await this.contactService.addContact(this.contactToEdit);
-    }
-    this.refreshContacts.emit();
-    this.closeModal();
+  closeModal() {
+    this.contactToEdit = null;
+    this.refreshContacts.emit(); // Reset parent state
   }
 }

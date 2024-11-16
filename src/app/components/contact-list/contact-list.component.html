@@ -1,26 +1,51 @@
 <div class="contact-card">
-    <button class="create-button" (click)="editContact(null)">Create</button>
-    
-    <table>
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let contact of contacts">
-          <td>{{ contact.firstname }}</td>
-          <td>{{ contact.lastname }}</td>
-          <td>{{ contact.email }}</td>
-          <td>
-            <button (click)="editContact(contact)" class="edit-button">Edit</button>
-            <button (click)="deleteContact(contact._id)" class="delete-button">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <button class="create-button" (click)="handleEdit(null)">Create</button>
   
+  <!-- Search Input -->
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="filterContacts()"
+    placeholder="Search contacts..."
+    class="search-input"
+  />
+
+  <!-- Filter Dropdown -->
+  <div class="filter-container">
+    <label for="filter" class="filter-label">Sort By:</label>
+    <select id="filter" [(ngModel)]="selectedFilter" (change)="applyFilter()" class="filter-dropdown">
+      <option value="none">Remove All Filters</option>
+      <option value="firstname-asc">First Name (A-Z)</option>
+      <option value="firstname-desc">First Name (Z-A)</option>
+      <option value="lastname-asc">Last Name (A-Z)</option>
+      <option value="lastname-desc">Last Name (Z-A)</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of filteredContacts">
+        <td>{{ contact.firstname }}</td>
+        <td>{{ contact.lastname }}</td>
+        <td>{{ contact.email }}</td>
+        <td>
+          <button (click)="handleEdit(contact)" class="edit-button">Edit</button>
+          <button
+            (click)="deleteContact(contact._id)"
+            class="delete-button"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -70,4 +70,52 @@
   button:hover {
     opacity: 0.9;
   }
+
+
+
+  .search-input {
+    width: 100%;          /* Makes the input span the full width */
+    padding: 10px;        /* Adds space inside the input field */
+    margin-bottom: 20px;  /* Creates space below the input field */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;   /* Rounded corners */
+    font-size: 1rem;      /* Sets a readable font size */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+  }
+  
+  .search-input:focus {
+    outline: none;             /* Removes default focus outline */
+    border-color: #007bff;     /* Changes border color to blue */
+    box-shadow: 0 0 5px #007bff; /* Adds a blue glow */
+  }
+  
+  .filter-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-label {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .filter-dropdown {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 200px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .filter-dropdown:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+  }
   

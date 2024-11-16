@@ -1,3 +1,6 @@
 <h1>Contact Application</h1>
 <app-contact-list (editContact)="openModal($event)"></app-contact-list>
-<app-contact-modal [contactToEdit]="contactToEdit" (refreshContacts)="refreshContacts()"></app-contact-modal>
+<app-contact-modal
+  [contactToEdit]="contactToEdit"
+  (refreshContacts)="refreshContacts()"
+></app-contact-modal>

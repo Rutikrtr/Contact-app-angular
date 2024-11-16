@@ -9,14 +9,13 @@ import {ContactModalComponent} from './components/contact-modal/contact-modal.co
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'contacts-app';
   contactToEdit: any = null;
 
-  openModal(contact: any = null) {
-    this.contactToEdit = contact ? { ...contact } : { firstname: '', lastname: '', email: '' };
+  openModal(contact: any) {
+    this.contactToEdit = contact;
   }
 
   refreshContacts() {
-    this.contactToEdit = null;
+    this.contactToEdit = null; // Reset the modal state
   }
 }
